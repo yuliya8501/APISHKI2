@@ -1,13 +1,11 @@
-package API;
+package api;
 
+import com.google.gson.Gson;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import static io.restassured.http.ContentType.JSON;
-import io.restassured.http.ContentType;
-import java.util.List;
 
 public class Autorization {
     private final static String url = "https://restful-booker.herokuapp.com";
@@ -17,6 +15,9 @@ public class Autorization {
         Specifications.installSpecification(Specifications.requestSpec(url), Specifications.responseSpecOK200());
         String token = "abc123";
          Registr user = new Registr("admin", "password123");
+
+         var json = new Gson().toJson(user);
+
          Successreg successreg = given()
                  .contentType(JSON)
                  .body(user)
@@ -30,4 +31,6 @@ Assert.assertEquals(token, successreg.getToken());
 
 
     }
+
+
 }

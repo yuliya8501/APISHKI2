@@ -1,4 +1,5 @@
-package API;
+package api;
+
 
 public class Successreg {
     private String token;
