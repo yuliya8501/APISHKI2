@@ -1,4 +1,5 @@
-package API;
+package api;
+
 
 public class Registr {
     private String username;
